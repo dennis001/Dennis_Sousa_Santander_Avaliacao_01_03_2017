@@ -7,8 +7,6 @@ Funcionalidade: Central de Atendimento
 	Para entrar em contato com o mesmo
 
 	Cenario: Verificar o telefone da central
-		Dado que esteja no site de busca
-		E pesquise por pessoa fisica santander
-		Quando acessar a home do banco
-		Então devo visualizar a central de atendimento
-		E devo validar que existe o telefone do banco
+		Dado que esteja na home do site
+		Quando acessar a area de agências
+		Então devo selecionar a agência mais proxima
