@@ -12,7 +12,8 @@ Quando(/^acessar a area de agências$/) do
 end
 
 Então(/^devo selecionar a agência mais proxima$/) do
-fill_in("refCep", :with => "06414025")
-find("#OpcaoBuscaAgencia").click
+assert_text("Cidade*")
+#fill_in("refCep", :with => "06414025")
+#find("#OpcaoBuscaAgencia").click
 
 end
