@@ -14,7 +14,7 @@ Então(/^devo selecionar a agência mais proxima$/) do
 page.driver.browser.switch_to.window(page.driver.browser.window_handles.last)
 within_frame(find("iframe")) do
 fill_in "refCep", :with => "04534011"
-sleep 5
  find(:css,'#BuscaAgenProximaForm > ul.botoes > li.alignR > a > img').click
+sleep 5
 	end
 end
