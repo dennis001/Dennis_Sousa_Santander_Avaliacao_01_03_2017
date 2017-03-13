@@ -16,6 +16,5 @@ page.driver.browser.switch_to.window(page.driver.browser.window_handles.last)
  		find(:css,'#BuscaAgenProximaForm > ul.botoes > li.alignR > a > img').click
  	select "R Joaquim Floriano ,27 - São Paulo", :from => "refEndereco"
 		assert_text("Agência(s) encontrada (s): 100 agência(s)")
-	sleep 5
 	end
  end

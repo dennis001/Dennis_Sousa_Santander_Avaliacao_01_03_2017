@@ -3,10 +3,12 @@
 
 Funcionalidade: Central de Atendimento	
 	Eu como cliente do banco
-	Quero acessar a central de atendimento
-	Para entrar em contato com o mesmo
+	Quero buscar agências mais proximas de minha localidade
+	Para entrar em contato com a mesma
 
-	Cenario: Verificar o telefone da central
+	Cenario: Verificar as agências mais proximas
 		Dado que esteja na home do site
 		Quando acessar a area de agências
 		Então devo selecionar a agência mais proxima
+
+	Cenario:
