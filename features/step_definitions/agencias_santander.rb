@@ -18,3 +18,16 @@ page.driver.browser.switch_to.window(page.driver.browser.window_handles.last)
 		assert_text("Agência(s) encontrada (s): 100 agência(s)")
 	end
  end
+
+ Dado(/^que esteja na pagina de agencias do site$/) do
+  visit "https://www.santander.com.br/br/busca-de-agencia"
+ end
+
+Quando(/^acessar a area de busca de agências no bairro$/) do
+	find('OpcaoBuscaAgenBairro').click_on
+	sleep 3
+ end
+
+Então(/^devo selecionar agência mais proxima$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end

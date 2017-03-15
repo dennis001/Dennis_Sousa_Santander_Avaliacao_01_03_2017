@@ -10,5 +10,9 @@ Funcionalidade: Central de Atendimento
 		Dado que esteja na home do site
 		Quando acessar a area de agências
 		Então devo selecionar a agência mais proxima
-
-	Cenario:
+		
+	@btn2
+	Cenario: Buscar agências em outros bairros
+		Dado que esteja na pagina de agencias do site
+		Quando acessar a area de busca de agências no bairro
+		Então devo selecionar agência mais proxima
