@@ -24,10 +24,19 @@ page.driver.browser.switch_to.window(page.driver.browser.window_handles.last)
  end
 
 Quando(/^acessar a area de busca de agências no bairro$/) do
-	find('OpcaoBuscaAgenBairro').click_on
-	sleep 3
- end
+	within_frame(find("iframe")) do
+		page.has_css? 'table tr.OpcaoBuscaAgenBairro'
+		page.find_by_id('OpcaoBuscaAgenBairro').click
+	end	
+end
 
 Então(/^devo selecionar agência mais proxima$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  within_frame(find("iframe")) do
+  	select "SP", :from => "localizacaoEstado"
+  	select "SAO PAULO", :from => "localizacaoCidade"
+  	select "ITAIM BIBI", :from => "localizacaoBairro"
+  	find(:css, '#BuscaAgenBairroForm > ul.botoes > li.alignR > a > img').click
+  	#assert_text 'Agência(s) encontrada (s): 7 agência(s)'
+  	sleep 5
+  end
 end
