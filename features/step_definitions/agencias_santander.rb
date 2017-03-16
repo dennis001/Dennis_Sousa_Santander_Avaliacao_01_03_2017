@@ -35,7 +35,8 @@ Então(/^devo selecionar agência mais proxima$/) do
   	select "SP", :from => "localizacaoEstado"
   	select "SAO PAULO", :from => "localizacaoCidade"
   	select "ITAIM BIBI", :from => "localizacaoBairro"
-  	find(:css, '#BuscaAgenBairroForm > ul.botoes > li.alignR > a > img').click
+  	click_button("buscar")
+  	#find(:css,'#BuscaAgenBairroForm > ul.botoes > li.alignR > a > img').click
   	#assert_text 'Agência(s) encontrada (s): 7 agência(s)'
   	sleep 5
   end
