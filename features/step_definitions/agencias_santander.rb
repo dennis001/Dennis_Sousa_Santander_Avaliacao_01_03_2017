@@ -40,7 +40,7 @@ Então(/^devo selecionar agência mais proxima$/) do
   end
 end
 
-Dado(/^que esteja na pagina de agencias do site no campo "([^"]*)"$/) do |arg1|
+Dado(/^que esteja na pagina de agencias do site no campo busque pelo numero da agência$/) do
   visit "https://www.santander.com.br/br/busca-de-agencia"
 end
 
@@ -57,4 +57,32 @@ Então(/^devo visualizar o local da agência solicitada$/) do
   	find(:css,'#BuscaAgenNumero li.alignR a img').click
   	assert_text 'Agência(s) encontrada (s): 1 agência(s)'
   end
+end
+
+Dado(/^que esteja na pagina de agencias do site no campo ache uma agência em sua rota$/) do
+  visit "https://www.santander.com.br/br/busca-de-agencia"
+end
+
+Quando(/^digitar os dados da minha localidade$/) do
+  	within_frame(find("iframe")) do
+		page.has_css? 'table tr.OpcaoBuscaAgenRota'
+		page.find_by_id('OpcaoBuscaAgenRota').click
+	end
+	within_frame(find("iframe")) do
+		fill_in "refCepOrigem", :with => "06330130"
+ 		find(:css,'#BuscaAgenRotaOrigemForm ul.botoes li.alignR a img').click
+ 		select "R Geraldo Soares Xavier ,47 - Carapicuíba", :from => "refEnderecoOrigem"
+ 		#find(:css,'#BuscaAgenRotaOrigemForm ul.botoes li.alignR a img').click
+	end
+end
+
+Então(/^devo selecionar uma das agências mais proximas$/) do
+  	within_frame(find("iframe")) do
+ 		fill_in "refCepDestino", :with => "04534011"
+ 		find(:css,'#BuscaAgenRotaDestinoForm ul.botoes li.alignR a img').click
+ 		select "R Joaquim Floriano ,27 - São Paulo", :from => "refEnderecoDestino"
+ 		find(:css,'#BuscaAgenRotaOK ul.botoes li.unico.alignR a img').click
+ 		assert_text 'Agência(s) encontrada (s): 1 agência(s)'
+ 		sleep 3
+ 	end
 end
