@@ -72,8 +72,7 @@ Quando(/^digitar os dados da minha localidade$/) do
 		fill_in "refCepOrigem", :with => "06330130"
  		find(:css,'#BuscaAgenRotaOrigemForm ul.botoes li.alignR a img').click
  		select "R Geraldo Soares Xavier ,47 - Carapicuíba", :from => "refEnderecoOrigem"
- 		#find(:css,'#BuscaAgenRotaOrigemForm ul.botoes li.alignR a img').click
-	end
+ 	end
 end
 
 Então(/^devo selecionar uma das agências mais proximas$/) do
