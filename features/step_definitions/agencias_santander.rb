@@ -14,7 +14,7 @@ page.driver.browser.switch_to.window(page.driver.browser.window_handles.last)
 	within_frame(find("iframe")) do
 		fill_in "refCep", :with => "04534011"
  		find(:css,'#BuscaAgenProximaForm > ul.botoes > li.alignR > a > img').click
- 	select "R Joaquim Floriano ,27 - São Paulo", :from => "refEndereco"
+ 		select "R Joaquim Floriano ,27 - São Paulo", :from => "refEndereco"
 		assert_text("Agência(s) encontrada (s): 100 agência(s)")
 	end
  end
@@ -35,9 +35,26 @@ Então(/^devo selecionar agência mais proxima$/) do
   	select "SP", :from => "localizacaoEstado"
   	select "SAO PAULO", :from => "localizacaoCidade"
   	select "ITAIM BIBI", :from => "localizacaoBairro"
-  	click_button("buscar")
-  	#find(:css,'#BuscaAgenBairroForm > ul.botoes > li.alignR > a > img').click
-  	#assert_text 'Agência(s) encontrada (s): 7 agência(s)'
-  	sleep 5
+  	find(:css,'#BuscaAgenBairro ul.botoes li.alignR a img').click
+  	assert_text 'Agência(s) encontrada (s): 7 agência(s)'
+  end
+end
+
+Dado(/^que esteja na pagina de agencias do site no campo "([^"]*)"$/) do |arg1|
+  visit "https://www.santander.com.br/br/busca-de-agencia"
+end
+
+Quando(/^acessar a area de buscar agências por numero da mesma$/) do
+  	within_frame(find("iframe")) do
+		page.has_css? 'table tr.OpcaoBuscaAgenNumero'
+		page.find_by_id('OpcaoBuscaAgenNumero').click
+	end
+end
+
+Então(/^devo visualizar o local da agência solicitada$/) do
+  within_frame(find("iframe")) do
+  	fill_in "txNumeroAgencia", :with => "214"
+  	find(:css,'#BuscaAgenNumero li.alignR a img').click
+  	assert_text 'Agência(s) encontrada (s): 1 agência(s)'
   end
 end
