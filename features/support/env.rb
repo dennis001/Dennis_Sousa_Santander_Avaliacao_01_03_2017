@@ -2,6 +2,8 @@ require 'rspec'
 require 'cucumber'
 require 'selenium/webdriver'
 require 'capybara/dsl'
+require 'site_prism'
+require 'pry'
 
 
 include Capybara::DSL
